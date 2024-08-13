@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+    <script>
+        function updateServerStatus() {
+            fetch(' http://172.22.18.249:5100/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('server1_status').textContent = data.server1_status;
+                    document.getElementById('server2_status').textContent = data.server2_status;
+                })
+                .catch(error => {
+                    document.getElementById('server1_status').textContent = "Server 1 is down";
+                    document.getElementById('server2_status').textContent = "Server 2 is down";
+                });
+        }
+
+        setInterval(updateServerStatus, 2000); // Update every 2 seconds
+    </script>
+</head>
+<body>
+    <h1>Server Status</h1>
+    <p><strong>Server 1:</strong> <span id="server1_status">Checking...</span></p>
+    <p><strong>Server 2:</strong> <span id="server2_status">Checking...</span></p>
+</body>
+</html>

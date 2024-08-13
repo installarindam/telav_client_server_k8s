@@ -1,0 +1,19 @@
+version: '3'
+services:
+  server1:
+    image: installarindam/telav_server1:02
+    ports:
+      - "44271:5050"
+
+  server2:
+    image: installarindam/telav_server2:02
+    ports:
+      - "44619:5050"
+
+  client:
+    image: installarindam/telav_client:02
+    ports:
+      - "5100:5100"
+    depends_on:
+      - server1
+      - server2

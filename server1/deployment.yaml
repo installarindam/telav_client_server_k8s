@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telav-server1
+  labels:
+    app: telav-server1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telav-server1
+  template:
+    metadata:
+      labels:
+        app: telav-server1
+    spec:
+      containers:
+      - name: telav-server1
+        image: installarindam/telav_server1:03
+        ports:
+        - containerPort: 5000
