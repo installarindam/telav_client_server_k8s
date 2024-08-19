@@ -14,6 +14,8 @@ spec:
       labels:
         app: telav-server1
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/worker: worker1
       containers:
       - name: telav-server1
         image: installarindam/telav_server1:03
