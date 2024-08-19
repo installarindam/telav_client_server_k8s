@@ -2,10 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: telav-server1-service
+  labels:
+    app: telav-server1
 spec:
   type: LoadBalancer
   ports:
   - port: 5000
     targetPort: 5000
+    protocol: TCP
   selector:
     app: telav-server1
